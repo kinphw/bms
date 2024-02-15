@@ -68,8 +68,7 @@ class ExportResult:
         strName = input("회사명? >>")
         strDatetime = time.strftime("%Y%m%d_%H%M%S")
         strFile = "휴폐업조회_" + strName + "_" + strDatetime + ".xlsx"        
-        self.dfResult.to_excel(strFile, index=False)
-        
+        self.dfResult.to_excel(strFile, index=False)        
         print("DONE")        
 
     def clean(self):

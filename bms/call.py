@@ -1,3 +1,4 @@
+import sys
 import requests
 import json
 import pandas as pd
@@ -19,7 +20,10 @@ class CallBMS:
     def run(self) -> bool:        
         print("사전 준비합니다.")
 
-        self.key = input("KEY? >> ") or r'%2FU0OKAbuaNxu6mUex7cGuk2gTjT%2BMU3xjJYVa%2BRVEZweDE0PmPxebPyk9LyRkNSfGf%2FzGtsplXf4HLTbZ3fMEw%3D%3D'
+        self.key = input("API KEY? >> ")
+        if self.key == '':
+            print("API KEY를 입력하지 않았습니다. 종료합니다.")
+            sys.exit(0)
 
         self.getList()
 
