@@ -9,7 +9,7 @@ class BMSmain:
     objCall:CallBMS
 
     def run(self):
-        print(Colors.RED + "BMS : BusinessMan Status query (NTS)" + Colors.END)
+        print(Colors.RED + "BMS : BusinessMan Status query (NTS) by PHW" + Colors.END)
         print("v0.0.2")
         
         msg = ""
