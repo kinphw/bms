@@ -32,7 +32,10 @@ class CallBMS:
     ##########################################
 
     def getList(self):            
-        self.liTarget = self.objRF.df['TARGET'].to_list()
+        #중복제거 구현
+        print("조회대상 수 : ", self.objRF.df['TARGET'].shape)
+        print("중복제거 후 조회대상 수 : ", self.objRF.df['TARGET'].drop_duplicates().shape)
+        self.liTarget = self.objRF.df['TARGET'].drop_duplicates().to_list()
       
     def eachConn(self):
         print("조회대상:", len(self.liTarget))

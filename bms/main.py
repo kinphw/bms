@@ -10,7 +10,7 @@ class BMSmain:
 
     def run(self):
         print(Colors.RED + "BMS : BusinessMan Status query (NTS) by PHW" + Colors.END)
-        print("v0.0.2")
+        print("v0.0.3")
         
         msg = ""
         msg += "1. read form\n"
