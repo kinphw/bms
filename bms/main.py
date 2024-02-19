@@ -1,3 +1,5 @@
+import os
+
 from bms.read import ReadForm
 from bms.call import CallBMS
 from bms.export import ExportResult
@@ -9,6 +11,8 @@ class BMSmain:
     objCall:CallBMS
 
     def run(self):
+        os.system("")
+        
         print(Colors.RED + "BMS : BusinessMan Status query (NTS) by PHW" + Colors.END)
         print("v0.0.2")
         
