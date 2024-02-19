@@ -33,8 +33,8 @@ class CallBMS:
 
     def getList(self):            
         #중복제거 구현
-        print("조회대상 수 : ", self.objRF.df['TARGET'].shape)
-        print("중복제거 후 조회대상 수 : ", self.objRF.df['TARGET'].drop_duplicates().shape)
+        print("조회대상 수 : ", self.objRF.df['TARGET'].shape[0])
+        print("중복제거 후 조회대상 수 : ", self.objRF.df['TARGET'].drop_duplicates().shape[0])
         self.liTarget = self.objRF.df['TARGET'].drop_duplicates().to_list()
       
     def eachConn(self):
@@ -43,8 +43,10 @@ class CallBMS:
         if len(self.liTarget) <= 100:
             print("조회대상이 100개 이하입니다. 단독 조회합니다.")            
         elif len(self.liTarget) > 100:
-            print("조회대상이 100개 이하입니다. 순차 조회합니다.")
+            print("조회대상이 100개 초과입니다. 순차 조회합니다.")
 
+        self.liResponse = [] #결과물 초기화
+        
         noStart = 0
         i = 0
         while True:
