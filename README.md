@@ -4,7 +4,7 @@ BusinessMan Status Query
 
 # Ver
 
-0.0.31
+0.0.4
 
 # History
 

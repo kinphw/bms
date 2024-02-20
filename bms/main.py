@@ -9,12 +9,16 @@ class BMSmain:
 
     objRF:ReadForm
     objCall:CallBMS
+    strKey:str = ''
 
+    def __init__(self, key:str = ''):
+        if not key == '': self.strKey = key
+    
     def run(self):
         os.system("")
         
         print(Colors.RED + "BMS : BusinessMan Status query (NTS) by PHW" + Colors.END)
-        print("v0.0.31")
+        print("v0.0.4")
         
         msg = ""
         msg += "1. read form\n"
@@ -38,7 +42,7 @@ class BMSmain:
                 self.objRF = ReadForm()
                 self.objRF.run()
             elif flag == '2':
-                self.objCall = CallBMS(self.objRF)
+                self.objCall = CallBMS(self.objRF, self.strKey)
                 self.objCall.run()                    
             elif flag == '3':
                 ExportResult(self.objCall, self.objRF).run()
