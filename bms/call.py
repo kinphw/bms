@@ -14,22 +14,29 @@ class CallBMS:
     response:requests.Response
     liResponse:list = []
 
-    def __init__(self, objRF:ReadForm): #DI
+    strKey:str = ''
+
+    def __init__(self, objRF:ReadForm, strKey:str = ''): #DI
         self.objRF = objRF
+        if not strKey == '': self.strKey = strKey
 
     def run(self) -> bool:        
         print("사전 준비합니다.")
 
-        self.key = input("API KEY? >> ")
-        if self.key == '':
-            print("API KEY를 입력하지 않았습니다. 종료합니다.")
-            sys.exit(0)
-
+        self.setKey()
         self.getList()
-
         self.eachConn()        
 
     ##########################################
+
+    def setKey(self):
+        if self.strKey == '':
+            tmp = input("API KEY? >> ")
+            if tmp == '':
+                print("API KEY를 입력하지 않았습니다. 종료합니다.")
+                sys.exit(0)
+            else:
+                self.strKey = tmp
 
     def getList(self):            
         #중복제거 구현
@@ -53,8 +60,7 @@ class CallBMS:
             noCall = noEnd - noStart
             liSliced = self.liTarget[noStart:noEnd]
             if self.conn(liSliced): self.liResponse.append(self.response)
-            print(i)
-            
+            print(i)            
 
             if noEnd == len(self.liTarget):
                 print("순환 끝"); break
@@ -63,7 +69,7 @@ class CallBMS:
 
     def conn(self, li:list) -> requests.Response:
 
-        pathTo = self.path + self.key
+        pathTo = self.path + self.strKey
 
         body = {
             "b_no": li

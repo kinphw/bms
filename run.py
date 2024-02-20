@@ -1,2 +1,2 @@
-import bms
-bms.run()
+from bms.main import BMSmain
+BMSmain().run()
