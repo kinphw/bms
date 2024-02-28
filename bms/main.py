@@ -18,7 +18,7 @@ class BMSmain:
         os.system("")
         
         print(Colors.RED + "BMS : BusinessMan Status query (NTS) by PHW" + Colors.END)
-        print("v0.0.4")
+        print("v0.0.6")
         
         msg = ""
         msg += "1. read form\n"

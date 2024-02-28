@@ -2,6 +2,7 @@ import sys
 import pandas as pd
 
 import bms.common.myFileDialog as myfd
+from bms.common.removeD import RemoveDecimal
 
 class ReadForm:
 
@@ -30,4 +31,5 @@ class ReadForm:
     def prepList(self):        
         self.df['TARGET'] = self.df[self.cName].copy()
         self.df['TARGET'] = self.df['TARGET'].astype('string').str.strip().replace('[-]','', regex=True)
+        RemoveDecimal(self.df).run('TARGET')
 
