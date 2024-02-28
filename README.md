@@ -4,12 +4,13 @@ BusinessMan Status Query
 
 # Ver
 
-0.0.4
+0.0.5
 
 # History
 
 240216 : 최초 작성
 240219 : 0.0.3 / 중복제거
+240226 : 결측치 처리
 
 # HowTo
 

@@ -41,8 +41,18 @@ class CallBMS:
     def getList(self):            
         #중복제거 구현
         print("조회대상 수 : ", self.objRF.df['TARGET'].shape[0])
-        print("중복제거 후 조회대상 수 : ", self.objRF.df['TARGET'].drop_duplicates().shape[0])
-        self.liTarget = self.objRF.df['TARGET'].drop_duplicates().to_list()
+
+        #NA제거
+        print("결측치(NA 수): ", self.objRF.df['TARGET'].isna().sum())
+        if self.objRF.df['TARGET'].isna().sum() != 0:
+            print('결측치를 999-99-99999로 변환합니다.')
+            self.objRF.df['TARGET'] = self.objRF.df['TARGET'].fillna("999-99-99999") #아예 바꿔야 나중에 merge 가능
+
+        #중복제거
+        dfDrop = self.objRF.df['TARGET'].drop_duplicates()                
+        print("중복제거 후 조회대상 수 : ", dfDrop.shape[0])
+
+        self.liTarget = dfDrop.to_list()
       
     def eachConn(self):
         print("조회대상:", len(self.liTarget))
